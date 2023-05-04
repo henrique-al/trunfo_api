@@ -54,11 +54,7 @@ class CartaControllerTest {
                         .contentType(APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.populacao").value(1))
-                .andExpect(jsonPath("$.area").value(1))
-                .andExpect(jsonPath("$.idh").value(1.1))
-                .andExpect(jsonPath("$.pib").value(1))
-                .andExpect(jsonPath("$.turista").value(1));
+                .andExpect(jsonPath("$").value(carta));
     }
 
     @Test
@@ -105,11 +101,7 @@ class CartaControllerTest {
 
         mockMvc.perform(get("/cards/{id}", carta.getId()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.populacao").value(1))
-                .andExpect(jsonPath("$.area").value(1))
-                .andExpect(jsonPath("$.idh").value(1.1))
-                .andExpect(jsonPath("$.pib").value(1))
-                .andExpect(jsonPath("$.turista").value(1));
+                .andExpect(jsonPath("$").value(carta));
     }
 
     @Test
@@ -124,12 +116,7 @@ class CartaControllerTest {
                         .content(objectMapper.writeValueAsString(cartaNovo))
                         .accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("País 2"))
-                .andExpect(jsonPath("$.populacao").value(1))
-                .andExpect(jsonPath("$.area").value(1))
-                .andExpect(jsonPath("$.idh").value(1))
-                .andExpect(jsonPath("$.pib").value(1))
-                .andExpect(jsonPath("$.turista").value(1));
+                .andExpect(jsonPath("$").value(cartaNovo));
     }
 
     @Test

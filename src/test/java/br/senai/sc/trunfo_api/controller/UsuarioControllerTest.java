@@ -48,11 +48,7 @@ class UsuarioControllerTest {
                         .contentType(APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.nome").value("U1"))
-                .andExpect(jsonPath("$.senha").value("123"))
-                .andExpect(jsonPath("$.vitorias").value(1))
-                .andExpect(jsonPath("$.derrotas").value(1))
-                .andExpect(jsonPath("$.foto").value("foto"));
+                .andExpect(jsonPath("$").value(usuario));
     }
 
     @Test
@@ -81,11 +77,7 @@ class UsuarioControllerTest {
 
         mockMvc.perform(get("/users/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("U1"))
-                .andExpect(jsonPath("$.senha").value("123"))
-                .andExpect(jsonPath("$.vitorias").value(1))
-                .andExpect(jsonPath("$.derrotas").value(1))
-                .andExpect(jsonPath("$.foto").value("foto"));
+                .andExpect(jsonPath("$").value(usuario));
     }
 
     @Test
@@ -100,11 +92,7 @@ class UsuarioControllerTest {
                         .content(objectMapper.writeValueAsString(usuarioNovo))
                         .accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("U1"))
-                .andExpect(jsonPath("$.senha").value("123"))
-                .andExpect(jsonPath("$.vitorias").value(1))
-                .andExpect(jsonPath("$.derrotas").value(1))
-                .andExpect(jsonPath("$.foto").value("foto"));
+                .andExpect(jsonPath("$").value(usuarioNovo));
     }
 
     @Test
