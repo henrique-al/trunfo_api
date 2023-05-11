@@ -42,6 +42,11 @@ public class CartaController {
         return ResponseEntity.status(200).body(cartaService.read(id));
     }
 
+    @GetMapping("/name/{nome}")
+    public ResponseEntity<Carta> findByName(@PathVariable String nome){
+        return ResponseEntity.status(200).body(cartaService.findByName(nome));
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         cartaService.delete(id);
