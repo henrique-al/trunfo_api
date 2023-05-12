@@ -32,8 +32,4 @@ public class CartaService{
     public void delete(Long id){
         cartaRepository.deleteById(id);
     }
-
-    public Carta findByName(String name){
-        return cartaRepository.findByName(name);
-    }
 }

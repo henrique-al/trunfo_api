@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartaRepository extends JpaRepository<Carta, Long> {
-    @Query("SELECT Carta FROM Carta WHERE nome=:nome")
-    Carta findByName(String nome);
 }
