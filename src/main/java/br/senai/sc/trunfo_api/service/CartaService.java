@@ -1,6 +1,7 @@
 package br.senai.sc.trunfo_api.service;
 
 import br.senai.sc.trunfo_api.model.Entity.Carta;
+import br.senai.sc.trunfo_api.model.Entity.Imagem;
 import br.senai.sc.trunfo_api.repository.CartaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
