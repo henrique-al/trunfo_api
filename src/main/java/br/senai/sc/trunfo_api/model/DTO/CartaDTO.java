@@ -1,5 +1,6 @@
 package br.senai.sc.trunfo_api.model.DTO;
 
+import br.senai.sc.trunfo_api.model.Entity.Imagem;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -25,4 +26,5 @@ public class CartaDTO {
     private Integer pib;
     @NotNull
     private Integer turista;
+    private String imagem;
 }

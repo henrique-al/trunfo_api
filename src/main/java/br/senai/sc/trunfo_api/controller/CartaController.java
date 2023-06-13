@@ -2,6 +2,7 @@ package br.senai.sc.trunfo_api.controller;
 
 import br.senai.sc.trunfo_api.model.DTO.CartaDTO;
 import br.senai.sc.trunfo_api.model.Entity.Carta;
+import br.senai.sc.trunfo_api.model.Entity.Imagem;
 import br.senai.sc.trunfo_api.service.CartaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
