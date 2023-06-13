@@ -25,10 +25,6 @@ public class CartaService{
         return cartaRepository.findById(id).orElseThrow();
     }
 
-//    public Optional<Carta> readPerPlayer(Long idPlayer){
-//        return cartaRepository.findOne(idPlayer);
-//    }
-
     public void delete(Long id){
         cartaRepository.deleteById(id);
     }
