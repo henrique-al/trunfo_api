@@ -1,15 +1,14 @@
 package br.senai.sc.trunfo_api.model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+import java.net.URL;
+
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Carta {
@@ -22,4 +21,5 @@ public class Carta {
     private Double idh;
     private Integer pib;
     private Integer turista;
+    private String imagem;
 }
