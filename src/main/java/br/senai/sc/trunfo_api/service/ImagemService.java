@@ -80,6 +80,7 @@ public class ImagemService {
                     .build();
 
             s3client.putObject(new PutObjectRequest(bucketName, imagem.getUuid(), file));
+            file.delete();
             return imagemRepository.save(imagem);
         } catch (Exception e) {
             e.printStackTrace();
