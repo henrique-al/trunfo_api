@@ -35,6 +35,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> readAll() {
+        System.out.println("GET ALL");
         return ResponseEntity.status(200).body(usuarioService.readAll());
     }
 
