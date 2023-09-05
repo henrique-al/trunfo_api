@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
@@ -43,10 +42,10 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.read(id));
     }
 
-    @GetMapping("/{nome}/{senha}")
-    public ResponseEntity<Usuario> readByName(@PathVariable String nome, @PathVariable String senha) {
-        return ResponseEntity.status(200).body(usuarioService.readByName(nome, senha));
-    }
+//    @GetMapping("/{nome}/{senha}")
+//    public ResponseEntity<Usuario> readByName(@PathVariable String nome, @PathVariable String senha) {
+//        return ResponseEntity.status(200).body(usuarioService.readByName(nome, senha));
+//    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

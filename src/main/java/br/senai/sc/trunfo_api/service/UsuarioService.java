@@ -24,13 +24,13 @@ public class UsuarioService {
         return usuarioRepository.findById(id).orElseThrow();
     }
 
-    public Usuario readByName(String name, String passwd) {
-        Usuario user = usuarioRepository.findByName(name);
-        if (user != null && user.getSenha().equals(passwd)) {
-            return user;
-        }
-        throw new SecurityException("Senha incorreta");
-    }
+//    public Usuario readByName(String name, String passwd) {
+//        Usuario user = usuarioRepository.findByName(name);
+//        if (user != null && user.getSenha().equals(passwd)) {
+//            return user;
+//        }
+//        throw new SecurityException("Senha incorreta");
+//    }
 
     public void delete(Long id) {
         usuarioRepository.deleteById(id);

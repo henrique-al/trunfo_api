@@ -2,7 +2,6 @@ package br.senai.sc.trunfo_api.controller;
 
 import br.senai.sc.trunfo_api.model.DTO.CartaDTO;
 import br.senai.sc.trunfo_api.model.Entity.Carta;
-import br.senai.sc.trunfo_api.model.Entity.Imagem;
 import br.senai.sc.trunfo_api.service.CartaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -19,14 +18,14 @@ import java.util.List;
 public class CartaController {
     private final CartaService cartaService;
 
-    @PostMapping
+    @PostMapping("/auth")
     public ResponseEntity<Carta> create(@RequestBody CartaDTO cartaDTO){
         Carta carta = new Carta();
         BeanUtils.copyProperties(cartaDTO, carta);
         return ResponseEntity.status(201).body(cartaService.createOrUpdate(carta));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/auth/{id}")
     public ResponseEntity<Carta> update(@PathVariable Long id, @RequestBody CartaDTO cartaNova){
         Carta cartaExistente = cartaService.read(id);
         BeanUtils.copyProperties(cartaNova, cartaExistente);
@@ -43,7 +42,7 @@ public class CartaController {
         return ResponseEntity.status(200).body(cartaService.read(id));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/auth/{id}")
     public void delete(@PathVariable Long id){
         cartaService.delete(id);
     }
