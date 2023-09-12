@@ -7,6 +7,7 @@ import br.senai.sc.trunfo_api.security.model.enums.Perfil;
 import br.senai.sc.trunfo_api.security.repository.SecurityRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,36 +21,42 @@ public class BancoUtil {
     @PostConstruct
     public void popularBanco(){
         usuarioRepository.deleteAll();
+        securityRepository.deleteAll();
         Usuario admin = new Usuario();
-        UsuarioSecurity adminSecurity = new UsuarioSecurity(1L,
-                List.of(Perfil.ADMIN),
-                "admin",
-                "admin",
-                true,
-                true,
-                true,
-                true);
+//        admin.setId(1L);
         admin.setVitorias(0);
         admin.setDerrotas(0);
         admin.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
-        admin.setSecurity(adminSecurity);
 
         Usuario padrao = new Usuario();
-        UsuarioSecurity usuarioSecurity = new UsuarioSecurity(1L,
-                List.of(Perfil.USUARIO),
-                "padrao",
-                "padrao",
-                true,
-                true,
-                true,
-                true);
+//        padrao.setId(2L);
         padrao.setVitorias(0);
         padrao.setDerrotas(0);
         padrao.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
-        padrao.setSecurity(usuarioSecurity);
+
+//        usuarioRepository.saveAll(List.of(admin, padrao));
+
+        UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
+                List.of(Perfil.USUARIO),
+                "padrao",
+                new BCryptPasswordEncoder().encode("padrao"),
+                true,
+                true,
+                true,
+                true
+                ,padrao);
+
+        UsuarioSecurity adminSecurity = new UsuarioSecurity(
+                List.of(Perfil.ADMIN),
+                "admin",
+                new BCryptPasswordEncoder().encode("admin"),
+                true,
+                true,
+                true,
+                true,
+                admin);
 
         securityRepository.saveAll(List.of(adminSecurity, usuarioSecurity));
-        usuarioRepository.saveAll(List.of(admin, padrao));
     }
 
 }

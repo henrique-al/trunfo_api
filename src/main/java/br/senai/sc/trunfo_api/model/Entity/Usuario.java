@@ -16,7 +16,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+//    @Column(unique = true)
     private Integer vitorias;
     private Integer derrotas;
     @Column(length = 400)
@@ -24,6 +24,4 @@ public class Usuario {
     @OneToMany
     @JoinColumn(name = "id_player")
     private List<Carta> cartas;
-    @OneToOne(cascade = CascadeType.ALL)
-    private UsuarioSecurity security;
 }
