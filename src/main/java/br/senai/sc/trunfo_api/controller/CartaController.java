@@ -18,14 +18,14 @@ import java.util.List;
 public class CartaController {
     private final CartaService cartaService;
 
-    @PostMapping("/auth")
+    @PostMapping
     public ResponseEntity<Carta> create(@RequestBody CartaDTO cartaDTO){
         Carta carta = new Carta();
         BeanUtils.copyProperties(cartaDTO, carta);
         return ResponseEntity.status(201).body(cartaService.createOrUpdate(carta));
     }
 
-    @PutMapping("/auth/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Carta> update(@PathVariable Long id, @RequestBody CartaDTO cartaNova){
         Carta cartaExistente = cartaService.read(id);
         BeanUtils.copyProperties(cartaNova, cartaExistente);
@@ -42,8 +42,9 @@ public class CartaController {
         return ResponseEntity.status(200).body(cartaService.read(id));
     }
 
-    @DeleteMapping("/auth/{id}")
-    public void delete(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
         cartaService.delete(id);
+        return ResponseEntity.status(204).build();
     }
 }

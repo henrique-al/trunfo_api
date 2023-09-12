@@ -15,26 +15,20 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class BancoUtil {
-    private UsuarioRepository usuarioRepository;
     private SecurityRepository securityRepository;
 
     @PostConstruct
     public void popularBanco(){
-        usuarioRepository.deleteAll();
         securityRepository.deleteAll();
         Usuario admin = new Usuario();
-//        admin.setId(1L);
         admin.setVitorias(0);
         admin.setDerrotas(0);
         admin.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
 
         Usuario padrao = new Usuario();
-//        padrao.setId(2L);
         padrao.setVitorias(0);
         padrao.setDerrotas(0);
         padrao.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
-
-//        usuarioRepository.saveAll(List.of(admin, padrao));
 
         UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
                 List.of(Perfil.USUARIO),

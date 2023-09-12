@@ -29,10 +29,17 @@ public class UsuarioSecurity implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Usuario usuario;
 
-    public UsuarioSecurity(List<Perfil> authorities, String username, String password, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled, Usuario usuario) {
+    public UsuarioSecurity(List<Perfil> authorities,
+                           String username,
+                           String password,
+                           boolean accountNonExpired,
+                           boolean accountNonLocked,
+                           boolean credentialsNonExpired,
+                           boolean enabled,
+                           Usuario usuario) {
         this.authorities = authorities;
         this.username = username;
         this.password = password;
