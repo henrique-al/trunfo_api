@@ -22,7 +22,7 @@ public class Filtro extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        if (rotaPrivada(request.getRequestURI())){
+        if (!rotaPrivada(request.getRequestURI())){
             try{
                 String token = CookieUtil.buscarCookie(request);
                 UsuarioSecurity usuario = JwtUtil.getUsuario(token);
@@ -48,6 +48,6 @@ public class Filtro extends OncePerRequestFilter {
     }
 
     private boolean rotaPrivada(String url){
-        return !url.contains("/log");
+        return url.contains("/public") || url.contains("/log");
     }
 }

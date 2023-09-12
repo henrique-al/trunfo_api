@@ -32,12 +32,12 @@ public class CartaController {
         return ResponseEntity.status(200).body(cartaService.createOrUpdate(cartaExistente));
     }
 
-    @GetMapping
+    @GetMapping("/public")
     public ResponseEntity<List<Carta>> readAll(){
         return ResponseEntity.status(200).body(cartaService.readAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/public/{id}")
     public ResponseEntity<Carta> read(@PathVariable Long id){
         return ResponseEntity.status(200).body(cartaService.read(id));
     }

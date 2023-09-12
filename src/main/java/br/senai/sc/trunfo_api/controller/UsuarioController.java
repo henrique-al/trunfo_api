@@ -18,7 +18,7 @@ import java.util.List;
 public class UsuarioController {
     private final UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping("/public")
     public ResponseEntity<Usuario> create(@RequestBody UsuarioDTO usuarioDTO) {
         Usuario usuario = new Usuario();
         BeanUtils.copyProperties(usuarioDTO, usuario);
@@ -37,7 +37,7 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.readAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/public/{id}")
     public ResponseEntity<Usuario> read(@PathVariable Long id) {
         return ResponseEntity.status(200).body(usuarioService.read(id));
     }

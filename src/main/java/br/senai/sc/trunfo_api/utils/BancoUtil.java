@@ -18,17 +18,17 @@ public class BancoUtil {
     private SecurityRepository securityRepository;
 
     @PostConstruct
-    public void popularBanco(){
+    public void popularBanco() {
         securityRepository.deleteAll();
         Usuario admin = new Usuario();
         admin.setVitorias(0);
         admin.setDerrotas(0);
-        admin.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
+        admin.setFoto("{\"bgColor\":\"#D2EFF3\",\"earSize\":\"big\",\"eyeBrowStyle\":\"upWoman\",\"eyeStyle\":\"circle\",\"faceColor\":\"#F9C9B6\",\"glassesStyle\":\"round\",\"hairColor\":\"#77311D\",\"hairStyle\":\"womanShort\",\"hatColor\":\"#D2EFF3\",\"hatStyle\":\"none\",\"mouthStyle\":\"laugh\",\"noseStyle\":\"round\",\"sex\":\"woman\",\"shirtColor\":\"#6BD9E9\",\"shirtStyle\":\"hoody\"}");
 
         Usuario padrao = new Usuario();
         padrao.setVitorias(0);
         padrao.setDerrotas(0);
-        padrao.setFoto("https://i.pinimg.com/originals/0f/6e/2a/0f6e2a1a3a5b5b0b0a0b0b0b0a0b0b0b.jpg");
+        padrao.setFoto("{\"bgColor\":\"#D2EFF3\",\"earSize\":\"big\",\"eyeBrowStyle\":\"upWoman\",\"eyeStyle\":\"circle\",\"faceColor\":\"#F9C9B6\",\"glassesStyle\":\"round\",\"hairColor\":\"#77311D\",\"hairStyle\":\"womanShort\",\"hatColor\":\"#D2EFF3\",\"hatStyle\":\"none\",\"mouthStyle\":\"laugh\",\"noseStyle\":\"round\",\"sex\":\"woman\",\"shirtColor\":\"#6BD9E9\",\"shirtStyle\":\"hoody\"}");
 
         UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
                 List.of(Perfil.USUARIO),
@@ -38,7 +38,7 @@ public class BancoUtil {
                 true,
                 true,
                 true
-                ,padrao);
+                , padrao);
 
         UsuarioSecurity adminSecurity = new UsuarioSecurity(
                 List.of(Perfil.ADMIN),

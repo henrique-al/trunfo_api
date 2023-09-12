@@ -45,6 +45,8 @@ public class Configuracao {
                                 .requestMatchers(HttpMethod.PUT, "/cards/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/cards/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/log/in", "/log/out").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/users/public").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/users/public/*","/cards/public").permitAll()
                                 .anyRequest().authenticated());
         http.sessionManagement(session ->
                 session.sessionCreationPolicy(
@@ -60,7 +62,7 @@ public class Configuracao {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Trocar a porta, caso precise
+        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001")); // Trocar a porta, caso precise
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");

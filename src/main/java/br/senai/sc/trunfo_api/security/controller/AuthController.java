@@ -37,10 +37,12 @@ public class AuthController {
                 UsuarioSecurity usuario = (UsuarioSecurity) authentication.getPrincipal();
                 Cookie cookie = CookieUtil.gerarCookie(usuario);
                 response.addCookie(cookie);
+//                System.out.println("Cookie: " + request.getCookies()[0].getValue());
                 return ResponseEntity.status(HttpStatus.OK).body(authentication.getPrincipal());
             }
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
